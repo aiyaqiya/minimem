@@ -1,0 +1,33 @@
+/* pages/mine/index.wxss */
+page{
+  background-color: white;
+}
+
+.header{
+  background-image: url(http://image.jiyilive.com/%E6%A4%AD%E5%9C%86%201.png);
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.menu-title{
+  font-size: 34rpx;
+  color: rgb(24, 24, 24)
+}
+
+.order-status > image{
+  width: 60rpx; 
+  height: 52rpx;
+}
+
+.order-status > text{
+  display: block; 
+  font-size: 24rpx;
+}
+
+.btn-login{
+  background-image:url(http://image.jiyilive.com/%E5%9C%86%E8%A7%92%E7%9F%A9%E5%BD%A21@2x.png);
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}

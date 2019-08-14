@@ -1,0 +1,73 @@
+
+<!-- 登陆状态 -->
+<view wx:if="{{hasUserInfo && canIUse}}">
+  <view class='header'>
+    <view class='text-center text-white' style='font-size: 36rpx; padding-top:80rpx;'>我的</view>
+    <navigator class="content" hover-class="none" url="userinfo/index">
+      <view class="text-white cf" style='height: 400rpx; padding-top: 50rpx;'>
+        <view class='fl' style='display:inline-block'>
+          <text class="cu-avatar xl round margin-left" style="background-image:url({{userInfo.avatarUrl}});"></text>
+          <text class="padding text-xl">{{userInfo.nickName}}</text>
+        </view>
+        <text class='cuIcon-right fr padding' style='font-size: 20px; padding-right: 60rpx;'></text>
+      </view>
+    </navigator>
+  </view>
+  <view class="cu-list menu card-menu sm-border" style='position: relative; top: -100px; box-shadow:1px 1px 1px 1px #eee;'>
+    <view class="cu-item arrow cf" style='padding-right: 60rpx;'>
+      <text class='fl menu-title'>我的订单</text>
+      <navigator class="content" hover-class="none" url="../order/list">
+        <text class="text-grey fr">全部订单</text>
+      </navigator>
+    </view>
+    <view class='bg-white flex justify-around padding'>
+      <view class='text-center order-status' style='inline-block' bindtap='bindShowOrderList' data-status='0'>
+        <image src='http://image.jiyilive.com/%E5%BE%85%E6%94%AF%E4%BB%98@2x.png'></image>
+        <text>待支付</text>
+      </view>
+      <view class='text-center order-status' style='inline-block' bindtap='bindShowOrderList' data-status='10'>
+        <image src='http://image.jiyilive.com/%E5%BE%85%E5%8F%91%E8%B4%A7@2x.png'></image>
+        <text>待发货</text>
+      </view>
+      <view class='text-center order-status' style='inline-block' bindtap='bindShowOrderList' data-status='20'>
+        <image src='http://image.jiyilive.com/%E5%B7%B2%E5%8F%91%E8%B4%A7@2x.png'></image>
+        <text>已发货</text>
+      </view>
+      <view class='text-center order-status' style='inline-block' bindtap='bindShowOrderList' data-status='30'>
+        <image src='http://image.jiyilive.com/%E5%B7%B2%E5%AE%8C%E6%88%90@2x.png'></image>
+        <text>已完成</text>
+      </view>
+      
+    </view>
+    <navigator class="cu-item arrow" hover-class="none" url="attention/list">
+        <text class="menu-title">我的关注</text>
+    </navigator>
+
+    <navigator class="cu-item arrow" hover-class="none" url="address/list">
+        <text class="menu-title">我的地址</text> 
+    </navigator>
+
+    <navigator class="cu-item arrow" hover-class="none" url="coupon/list">
+        <text class="menu-title">我的优惠券</text>
+    </navigator>
+
+    <!-- <navigator class='cu-item arrow' hover-class="none" url="../list/list">
+      <text class="menu-title">帮助中心</text>
+    </navigator> -->
+
+    <button class="content cu-item arrow" style='text-align: left' open-type="contact">
+      <text class="menu-title">在线客服</text>
+    </button>
+  </view>
+</view>
+
+<!-- 未登录状态 -->
+<view wx:else>
+  <view class='flex justify-center align-center' style='height: 400px;'>
+    <view>
+      <view class='text-center margin-tb' style='font-size: 17px;'>和爱豆零距离</view>
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='btn-login cu-btn lg text-white' style='padding: 0; height: 33px; font-size:18px; width: 100px;'> 快速登录 </button>
+    </view>
+    
+  </view>
+</view>

@@ -1,0 +1,10 @@
+<!--pages/errors/404.wxml-->
+<!-- 导航 -->
+<cu-custom bgColor="bg-white" isBack="{{false}}">
+  <!-- <view slot="backText">返回</view> -->
+  <view slot="content" class='header-title'>{{message}}</view>
+</cu-custom>
+
+<view class='imagesize'>
+  <image src="/images/errors/404.png" class='in-image'></image>
+</view>

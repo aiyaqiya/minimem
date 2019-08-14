@@ -1,0 +1,52 @@
+<!-- 导航 -->
+<cu-custom bgColor="bg-white" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content" class='header-title'>个人信息</view>
+</cu-custom>
+
+<!-- 页面 -->
+<view class="cu-list menu sm-border">
+  <!-- 头像 -->
+  <view class="cu-item padding-right" style='height: 200rpx;'>
+    <text class="padding text-xl">头像</text>
+    <text class="cu-avatar xl round margin-left" style="background-image:url({{userInfo.avatarUrl}});"></text>
+  </view>
+  <!-- 积分 -->
+  <view class="cu-item arrow">
+    <navigator class="content flex justify-between padding-left" hover-class="none" url="integral">
+      <text>积分</text>
+      <text>{{integral}}分</text>
+    </navigator>
+  </view>
+  <!-- 性别 -->
+  <view class="cu-item arrow">
+    <view class="content flex justify-between padding-left">
+      <text>性别</text>
+      <picker bindchange="bindGenderChange" value="{{genderIndex}}" range="{{genderList}}">{{genderList[genderIndex]}}</picker>
+    </view>
+  </view>
+  <!-- 生日 -->
+  <view class="cu-item arrow">
+    <view class="content flex justify-between padding-left">
+      <text>生日</text>
+      <picker
+        mode="date"
+        value="{{birthday}}"
+        bindchange="bindBirthdayChange"
+      >
+        <view class="picker">{{birthday? birthday : '待完善'}}</view>
+      </picker>
+    </view>
+  </view>
+  <!-- 绑定手机号 -->
+  <view class="cu-item arrow">
+    <view class="content flex justify-between padding-left">
+      <text style='line-height: 70rpx;'>绑定手机号</text>
+      <button class='cu-btn bg-white padding-0 text-black' style='font-size: 30rpx;' open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">{{mobile == ''? '未绑定': mobile}}</button>
+    </view>
+  </view>
+  <!-- notice -->
+  <view class="cu-item">
+    <image class='complete' src='http://image.jiyilive.com/%E5%AE%8C%E5%96%84%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%8F%AF%E8%8E%B7%E5%BE%97100%E7%A7%AF%E5%88%86%E5%93%A6%EF%BC%81@2x.png'></image>
+  </view>
+</view>

@@ -1,0 +1,53 @@
+<!-- 导航 -->
+<cu-custom bgColor="bg-white" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content" class='header-title'>我的地址</view>
+</cu-custom>
+
+<!-- 列表 -->
+<view class="cu-card case">
+  <view wx:if="{{empty}}" class='text-center margin' style='padding-top: 200rpx;'>
+    <image style="width: 400rpx; height: 300rpx;" src='http://image.jiyilive.com/%E6%9A%82%E6%97%A0%E6%95%B0%E6%8D%AE@2x.png'></image>
+    <view class='text-lg'>您还未添加地址哦</view>
+  </view>
+  <view wx:for="{{addressList}}" wx:key class="cu-item shadow padding" style='position: relative;box-shadow:0px 2px 5px 5px #f5f5f5;'>
+    <view class='content margin-sm text-black' bindtap="{{chooseAddress?'bindChooseAddress':''}}" data-id="{{item.id}}" data-address="{{item.destOneAddress + ' ' + item.destTwoAddress + ' ' + item.destThreeAddress + '\n' + item.address}}">
+      <view wx:if="{{item.isDefault==1}}" class='cu-tag bg-purple'>默认</view>
+      <view class='flex justify-between margin-tb'>
+        <view class='title'>收货人姓名</view>
+        <view class='value'>{{item.receiverName}}</view>
+      </view>
+      <view class='flex justify-between margin-tb'>
+        <view class='title'>电话</view>
+        <view class='value'>{{item.receiverMobile}}</view>
+      </view>
+      <view class='flex justify-between margin-tb'>
+        <view class='title'>收货地址</view>
+        <view class='value'>
+          <text style='display: block;'>{{item.destOneAddress}} {{item.destTwoAddress}} {{item.destThreeAddress}}</text>
+          <text style='display: block; text-align: right;'>{{item.destFourAddress?item.destFourAddress:''}} {{item.address}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='footer flex justify-end padding-top-sm solid-top text-orange'>
+        <button bindtap='editAddress' data-info="{{item}}" class='cu-btn bg-white solid margin-right'>修改地址</button>
+        <button bindtap='deleteAddress' data-id="{{item.id}}" class='cu-btn bg-white solid'>删除</button>
+    </view>
+  </view>
+</view>
+
+<view class='flex justify-center margin-top-lg' style='position:fixed; bottom:50rpx; width: 100%;'>
+  <button class="cu-btn btn-addAddress text-bold" role="button" aria-label="" aria-disabled="false" bindtap='addAddress' style='width: 400rpx; height: 80rpx; font-size: 36rpx; background-color: rgba(1,1,1,0);'>{{empty? '新增地址': '+添加收货地址'}}</button>
+</view>
+
+<view class="cu-modal bottom-modal {{deleteAddressId!=0?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-green" bindtap='confirm'>确定</view>
+      <view class="action text-blue" bindtap="hideModal">取消</view>
+    </view>
+    <view class="padding-xl">
+      确认删除此地址？
+    </view>
+  </view>
+</view>

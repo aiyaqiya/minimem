@@ -1,0 +1,30 @@
+/* pages/mine/address/list.wxss */
+page{
+  background-color: white;
+}
+.cu-card.case .cu-tag {
+  position:absolute;
+  left:0;
+  top:0;
+}
+.btn-addAddress{
+  background-image: url(http://image.jiyilive.com/%E6%B7%BB%E5%8A%A0%E6%94%B6%E8%B4%A7%E5%9C%B0%E5%9D%80@2x.png);
+  background-size: 100% 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: white;
+  font-size: 36rpx;
+}
+
+.title{
+  font-size: 30rpx;
+}
+
+.value{
+  font-size: 28rpx;
+  color: rgb(51, 51, 51)
+}
+
+.footer button{
+  border:1px solid #ddd;
+}

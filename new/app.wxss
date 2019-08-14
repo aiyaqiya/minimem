@@ -1,0 +1,10 @@
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+.header-title{
+  color: rgb(15,15,15);
+  font-size: 36rpx;
+}
+
+page{
+  font-family:PingFang SC
+}

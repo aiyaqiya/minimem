@@ -1,0 +1,73 @@
+page {
+  background-color: white;
+}
+.recommend {
+  text-align: center;
+  height: 50rpx;
+  margin: 16rpx 0 10rpx 0;
+}
+
+.recommend-title {
+  display: table;
+  width: 100%;
+  line-height: 50rpx;
+  white-space: nowrap;
+  border-spacing: 2rem 0;
+  font-size: 30rpx;
+  color: gray
+}
+
+.recommend-title::before, .recommend-title::after {
+  display: table-cell;
+  content: "";
+  width: 50%;
+  background: linear-gradient(#ccc, #ccc) repeat-x center;
+  background-size: 0.1rem 0.1rem;
+}
+
+.cu-card.article>.cu-item .content>image {
+  margin-top: 30rpx;
+  height: 11em;
+}
+
+.cu-card.article>.cu-item .title {
+  line-height: 60rpx;
+  padding: 20rpx 0 0 0;
+}
+
+.cu-card.article>.cu-item .content .text-content {
+  height: 2.8em;
+}
+
+.charge text {
+  line-height: 64rpx;
+}
+
+.address {
+  margin: 6rpx;
+}
+
+.tags .time {
+  padding: 2rpx 0;
+}
+
+.get-btn{
+  color: white;
+  background-image: url('http://image.jiyilive.com/%E5%9C%86%E8%A7%92%E7%9F%A9%E5%BD%A25@2x.png');
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.tower-swiper .tower-item {
+  transform: scale(calc(0.5 + var(--index) / 10));
+  margin-left: calc(var(--left) * 100rpx - 150rpx);
+  z-index: var(--index);
+  left: 200rpx;
+  width: 650rpx;
+  height: 350rpx;
+}
+.tower-swiper .tower-item .swiper-item{
+  border-radius:15px;
+  box-shadow:0 0 3px 2px rgba(0,0,0,0.1);
+}

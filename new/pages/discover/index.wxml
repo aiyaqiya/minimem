@@ -1,0 +1,19 @@
+<!--pages/discover/index.wxml-->
+<cu-custom bgColor="bg-white">
+  <view slot="content" class='header-title'>发现</view>
+</cu-custom>
+<view wx:for="{{discoverList}}" wx:key class="cu-card case">
+  <view class="cu-item shadow">
+    <view class="image">
+      <image src="{{item.thumbnailUrl}}" mode="widthFix"></image>
+      <view wx:if='{{isOnly==1}}' class="cu-tag bg-blue">独家</view>
+      <view class="cu-bar bg-shadeBottom flex justify-between">
+        <view>
+          <view class="text-cut text-bold">{{item.activityTitle}}</view>
+          <view class="text-cut text-bold">{{item.activityIntro}}</view>
+        </view>
+        <view class='end-time text-xl text-bold'>{{item.day}}天内结束</view>
+      </view>
+    </view>
+  </view>
+</view>

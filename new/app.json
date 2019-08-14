@@ -1,0 +1,71 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/discover/index",
+    "pages/mine/index",
+    "pages/mine/userinfo/index",
+    "pages/mine/userinfo/integral",
+    "pages/order/list",
+    "pages/order/detail",
+    "pages/mine/attention/list",
+    "pages/mine/address/list",
+    "pages/mine/address/edit",
+    "pages/mine/coupon/list",
+    "pages/order/express/detail",
+    "pages/index/performance/detail",
+    "pages/index/performance/map",
+    "pages/order/payment/confirm",
+    "pages/order/payment/pay",
+    "pages/order/payment/finish",
+    "pages/errors/404",
+    "pages/index/performance/chooseSite"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#ffffff",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Memovox",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#6a6b7f",
+    "selectedColor": "#b55abb",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "images/tabbar/performance_cur.png",
+        "iconPath": "images/tabbar/performance.png",
+        "pagePath": "pages/index/index",
+        "text": "演出"
+      },
+      {
+        "selectedIconPath": "images/tabbar/activity_cur.png",
+        "iconPath": "images/tabbar/activity.png",
+        "pagePath": "pages/discover/index",
+        "text": "通关任务"
+      },
+      {
+        "selectedIconPath": "images/tabbar/me_cur.png",
+        "iconPath": "images/tabbar/me.png",
+        "pagePath": "pages/mine/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "小程序请求您的地理位置"
+    }
+  },
+  "plugins": {
+    "myPlugin": {
+      "provider": "wx5bc2ac602a747594",
+      "version": "1.0.6"
+    }
+  }
+}

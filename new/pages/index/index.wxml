@@ -1,0 +1,79 @@
+<cu-custom bgColor="bg-white">
+  <view slot="content" class='header-title'>记忆之声</view>
+</cu-custom>
+
+
+<view class="tower-swiper" bindtouchmove="towerMove" bindtouchstart="towerStart" bindtouchend="towerEnd">
+  <view class="tower-item {{item.zIndex==1?'none':''}}" wx:for="{{swiperList}}" wx:key style="--index:{{item.zIndex}};--left:{{item.mLeft}}" bindtap='showDetail' data-id="{{item.url}}">
+    <view class="swiper-item" style='border-radius: 30rpx;'>
+      <image src="{{item.thumbUrl}}" mode="aspectFill" wx:if="{{item.type==1}}"></image>
+      <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+    </view>
+  </view>
+</view>
+
+<!-- 普通轮播图 -->
+<!-- <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{swiperList}}" wx:key bindtap='showDetail' data-id="{{item.id}}">
+    <image src="{{item.thumbUrl}}" mode="aspectFill" wx:if="{{item.type==1}}"></image>
+    <video src="{{item.thumbUrl}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+  </swiper-item>
+</swiper> -->
+
+<view class='text-left padding-left' style='color:rgb(15,15,15);font-size: 36rpx;font-weight:bold;'>精彩推荐</view>
+<view class='text-center' bindtap='showDetail' data-id='{{jingcaituijianId}}'>
+  <image style='width: 700rpx; height: 140rpx; margin: 20px auto; border-radius: 10px;' src='{{jingcaituijian}}'></image>
+</view>
+
+<view class='text-left padding-left margin-top cf'>
+  <text style='color:rgb(15,15,15);font-size: 36rpx;font-weight:bold;'>热门推荐</text>
+  <view class='fr margin-right flex justify-middle' style='display: inline-block; margin-top: 12rpx;' bindtap='bindShowMore'>
+    <!-- <text style='font-size: 22rpx; color: rgb(84,81,81);'>查看更多</text>
+    <image src='http://image.jiyilive.com/%E6%9B%B4%E5%A4%9A.png' style='width: 10rpx; height: 18rpx; display: inline-block; line-height: 22rpx; margin-left: 4rpx;'></image> -->
+  </view>
+ 
+  
+</view>
+<!-- <view class='recommend'>
+  <text class='recommend-title'>热门推荐</text>
+</view> -->
+
+<view wx:for="{{cardList}}" wx:key class="cu-card article no-card solids-bottom" bindtap='showDetail' data-id="{{item.performanceVo.id}}">
+  <view class="cu-item shadow">
+    <view class="content">
+      <image src="{{item.performanceVo.thumbUrl}}" mode="aspectFill"></image>
+      <view class="desc">
+        <view class='title' style='color: rgb(51,51,51)'>{{item.performanceVo.simpleTitle}}</view>
+        <view class="text-content" style='color: rgb(59,59,59);'>{{item.performanceVo.description}}</view>
+
+        <view class="tags">
+          <view class="cu-tag bg-white time" style='color: rgb(80,80,80);'>{{item.performanceVo.showTimeStr}}</view>
+          <view wx:for="{{item.performanceVo.keyWordsList}}" wx:key wx:for-item="keyword" class="cu-tag line-{{keywordsColor[index]}} light sm round">{{keyword}}</view>
+        </view>
+
+        <view class="address" style='color: rgb(158,156,157)'>
+          {{item.placeInfo.address}}
+        </view>
+
+        <view class="charge">
+          <text class="text-price text-xl fl text-red padding-10" style='color: rgb(255,52,52)'>{{item.performanceVo.lowPrice}}起</text>
+          <button class="cu-btn round shadow fr get-btn">立刻获得</button>
+        </view>
+    
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{noMore}}" class='text-center text-gray'>没有更多了</view>
+
+<view class="cu-modal {{showStartModal? (isOpen == 1? 'show': ''):''}}">
+  <view class="cu-dialog text-center" style='background-color: rgba(1,1,1,0);'>
+    <view class="bg-img" bindtap='showDetail' data-id="{{openBannerInfo.url}}" style="background-image: url('{{openBannerInfo.thumbUrl}}');width: 496rpx; height: 630rpx; margin: 0 auto;">
+    </view>
+    <view class="cu-bar justify-center text-white">
+      <view class="action" bindtap="hideModal">
+        <image src='http://image.jiyilive.com/%E5%8F%89%E5%8F%B7.png' style='width: 49rpx; height: 49rpx;'></image>
+      </view>
+    </view>
+  </view>
+</view>
