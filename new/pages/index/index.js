@@ -23,7 +23,7 @@ Page({
     jingcaituijian: '',
     jingcaituijianId: 0,
   },
-  onLoad: function () {
+  onLoad: function (option) {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -56,6 +56,62 @@ Page({
         }
       })
     }
+    //获取openId
+    //get OPENID
+    /*
+    var that = this
+    var user = wx.getStorageSync('user') || {};
+   // console.log(user);
+    var userInfo = wx.getStorageSync('userInfo') || {};
+    if (!user.openid || (user.expires_in || Date.now()) < (Date.now() + 600)) {
+     
+          if (app.globalData.jsCode) {
+            var d = that.data;//这里存储了appid、secret、token串
+            var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + d.appid + '&secret=' + d.secret + '&js_code=' + app.globalData.jsCode + '&grant_type=authorization_code';
+            wx.request({
+              url: l,
+              data: { "activityId": app.globalData.selfActiveId, },
+              method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
+              header: {}, // 设置请求的 header
+              success: function (res) {
+                var obj = {};
+                obj.openid = res.data.openid;
+                obj.expires_in = Date.now() + 1000 * 60 * 60 * 24;
+                user = obj;
+                wx.setStorageSync('user', obj);//存储openid
+              }
+            });
+          } else {
+            console.log('获取用户登录态失败！');
+          }        
+      
+    }
+    */    
+    //【【添加保存分享逻辑】】
+    //检测是否带参数，判断是否点开别人分享得小程序
+    app.globalData.selfActiveId = option.shareId;
+    if (JSON.stringify(option) !== "{}") {
+      if (option.userId){ 
+        
+        //传值给后台             
+        //利用app.apirequest
+        app.apiRequest({
+          url: '/activityShare/updateShareQty',          
+          data: {
+            shareId: option.userId,
+            type: "1",
+            activityId:option.shareId,
+          },
+          success: function(res){
+            wx.showModal({
+              title: JSON.stringify(option)
+            });
+            console.log(res);
+          }
+        })
+      }
+    }
+    
   },
   /**
   * 生命周期函数--监听页面初次渲染完成
@@ -65,6 +121,7 @@ Page({
     this.getBannerList();
     //获取演出列表
     this.getPerformance();
+    
   },
 
   /**
@@ -198,13 +255,44 @@ Page({
     })
     //初始化完毕，开始轮播
     var _this = this;
-    this.data.intval = setInterval(function () { _this.lunbo("left"); }, 5000);
+    if(this.data.intval==undefined){
+      this.data.intval = setInterval(function () { _this.lunbo("left"); }, 5000);
+    }
+  },
+  onHide:function(){
+    clearInterval(this.data.intval);
+    this.data.intval=undefined;
+  },
+  onShow:function(){
+    var _this=this;
+    if (this.data.intval == undefined) {
+      this.data.intval = setInterval(function(){_this.lunbo("left");}, 5000);
+    }
+    //获取用户表id
+    var tok=setInterval(function(){
+      if(app.globalData.apiToken){
+        app.apiRequest({
+          url: '/user/queryUserId',
+          data: { 'token': app.globalData.apiToken },
+          success: function (res) {            
+            app.globalData.userNumId = res.data.data
+          },
+          fail: function (res) {
+            console.log("失败了：", res)
+          }
+        });
+        clearInterval(tok);
+      }
+      
+    },200)
+    
   },
   // towerSwiper触摸开始
   towerStart(e) {
+    clearInterval(this.data.intval);
     this.setData({
       towerStart: e.touches[0].pageX
-    })
+    });
   },
   // towerSwiper计算方向
   towerMove(e) {

@@ -75,7 +75,7 @@ Page({
     //转换成天数
     var day = parseInt(days / (1000 * 60 * 60 * 24));
     //do something
-    console.log("day = ", day);
+   // console.log("day = ", day);
     return day;
   },
 
@@ -83,7 +83,7 @@ Page({
     app.apiRequest({
       url: '/activity/queryAll',
       success: res => {
-        console.log(res)
+        //console.log(res)
         if(res.data.code == 0){
           for(var i=0; i<res.data.data.length; i++){
             res.data.data[i].day = this.checkDate(res.data.data[i].endDate)
@@ -91,9 +91,17 @@ Page({
           this.setData({
             discoverList: res.data.data
           })
-          console.log(this.data.discoverList);
+         // console.log(this.data.discoverList);
         }
       }
     })
+  },
+  showActive:function(e){//进入活动函数
+    var tid=e.target.dataset.id;    
+  //  console.log("获取的点击信息：",e);return;
+    wx.redirectTo({
+      url:"../activity/index/index?id="+tid
+    })
+
   }
 })

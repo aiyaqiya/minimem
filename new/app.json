@@ -18,7 +18,14 @@
     "pages/order/payment/pay",
     "pages/order/payment/finish",
     "pages/errors/404",
-    "pages/index/performance/chooseSite"
+    "pages/index/performance/chooseSite",
+    "pages/activity/index/index",
+    "pages/activity/video/vid",
+    "pages/activity/mess/mess",
+    "pages/activity/lingj/lingj",
+    "pages/activity/wish/wish",
+    "pages/activity/pict/pict",
+    "pages/activity/share/share"
   ],
   "window": {
     "backgroundTextStyle": "light",
